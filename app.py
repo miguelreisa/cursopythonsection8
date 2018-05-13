@@ -15,12 +15,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #coiso
 app.secret_key = 'miguel' #teria que ser secreto & seguro
 api = Api(app)
 
-#Flask decorator que afecta o metodo em baixo
-#nao precisamos de criar as tabelas antes
-@app.before_first_request #antes do prmeiro request, corre db.create_all() a menos que ja exista o ficheiro data.db
-def create_tables():
-	db.create_all() #cria as tables apenas que vê (nos imports). #sempre que criarmos uma nova tabela eliminar ficheiro data.db para isto correr e criar todas incluindo as novas
-
 #cria um novo endpoint /auth em que se envia username e password e sao levados ao metodo authenticate feito por nos, se der match(ver funcao authenticate), devolve o user (na func authenticate)
 #este auth endpoint devolve um jwt token que pode ser enviado no proximo request feito. quando enviamos um token jwt, o jwt chama a funcao identity(colocada como param aqui) e ve o user correcto para esse token
 #se conseguir fizer isso é porque o user esta autenticado e pode fazer o request
