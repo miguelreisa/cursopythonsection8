@@ -1,4 +1,5 @@
 #Qd faz import corre o codigo todo, ou seja se houver um print nos ficheiros importados corre esse print
+import os
 
 from flask import Flask
 from flask_restful import Api
