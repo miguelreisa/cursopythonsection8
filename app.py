@@ -10,7 +10,7 @@ from resources.item import Item, ItemList
 from resources.store import Store,StoreList
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db' #dizer ao sqlalchemy onde encontrar o ficheiro .db (aqui dizemos que esta na root folder do projecto). Nao precisa de ser sqlite, pode ser mysql, etc
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') #dizer ao sqlalchemy onde encontrar o ficheiro .db (aqui dizemos que esta na root folder do projecto). Nao precisa de ser sqlite, pode ser mysql, etc
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #coiso
 app.secret_key = 'miguel' #teria que ser secreto & seguro
 api = Api(app)
